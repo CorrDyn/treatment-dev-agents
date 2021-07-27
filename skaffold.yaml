@@ -1,0 +1,23 @@
+apiVersion: skaffold/v2beta18
+kind: Config
+metadata:
+  name: cloud-spanner-emulator
+
+deploy:
+  kubeContext: minikube
+  kustomize:
+    defaultNamespace: dev-agents
+    paths:
+    - .k8s/bases/cloud-spanner-emulator
+---
+apiVersion: skaffold/v2beta18
+kind: Config
+metadata:
+  name: redis
+
+deploy:
+  kubeContext: minikube
+  kustomize:
+    defaultNamespace: dev-agents
+    paths:
+    - .k8s/bases/redis
