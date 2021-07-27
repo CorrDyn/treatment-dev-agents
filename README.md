@@ -1,12 +1,14 @@
 # Development tools & agents
 
-This repo contains [Skaffold][skaffold] and [Kustomize][kustomize] configurations to be used in local development environments. The following are currenty supported:
+This repo contains [Skaffold][skaffold] and [Kustomize][kustomize] configurations to be used in local development environments. The following are currently supported:
 
 * Google Cloud Spanner local emulator
 * Redis
 
 
 ## Using the agent configurations
+
+Clone the `dev-agents` repository in the directory just above your application configuration, so from within your application directory it's reachable with `ls ../dev-agents`.
 
 ### Adding Google Cloud Spanner emulator deployment to your project
 
@@ -21,8 +23,7 @@ metadata:
 requires:
   # Adds the cloud-spanner emulator as a requirement of the project
   - configs: ["cloud-spanner-emulator"]
-    git:
-      repo: ssh://@source.developers.google.com:2022/p/trmt-050/r/dev-agents
+    path: ../dev-agents
 
 # Normal project build & deploy conig
 build:
@@ -66,8 +67,7 @@ metadata:
 requires:
   # Adds Redis as a requirement of the project
   - configs: ["redis"]
-    git:
-      repo: ssh://@source.developers.google.com:2022/p/trmt-050/r/dev-agents
+    path: ../dev-agents
 
 # Normal project build & deploy conig
 build:
