@@ -9,6 +9,17 @@ deploy:
     defaultNamespace: dev-agents
     paths:
     - .k8s/bases/cloud-spanner-emulator
+
+portForward:
+- resourceType: Service
+  resourceName: cloud-spanner-emulator
+  namespace: dev-agents
+  port: 9010
+- resourceType: Service
+  resourceName: cloud-spanner-emulator
+  namespace: dev-agents
+  port: 9020
+
 ---
 apiVersion: skaffold/v2beta18
 kind: Config
@@ -21,3 +32,9 @@ deploy:
     defaultNamespace: dev-agents
     paths:
     - .k8s/bases/redis
+
+portForward:
+- resourceType: Service
+  resourceName: redis
+  namespace: dev-agents
+  port: 6379
